@@ -23,14 +23,4 @@ cask 'penbrew-full' do
   depends_on cask: 'penbrew-vulnerability-tools'
   depends_on cask: 'penbrew-web-application-tools'
   depends_on cask: 'penbrew-wireless-tools'
-
-  #def install
-  #  system "./configure", "--with-libnet-includes=/usr/local/include/",
-  #  "--disable-gtk",
-  #  "--with-pcap-includes=/usr/local/include",
-  #  "--prefix=#{prefix}"
-  #  system "make"
-  #  system "make install" # if this fails, try separate make/make install steps
-  #end
-
 end

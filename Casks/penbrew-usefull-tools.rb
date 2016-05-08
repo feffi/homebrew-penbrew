@@ -1,4 +1,4 @@
-cask 'penbrew-hardware-hacking' do
+cask 'penbrew-usefull-tools' do
   version '0.1'
   sha256 :no_check
 
