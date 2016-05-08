@@ -12,5 +12,6 @@ Formular not contained in the canonical homebrew repository will sporadically ma
 * use TravisCI
 @see https://github.com/Homebrew/brew/blob/master/.travis.yml
 @see https://github.com/Linuxbrew/linuxbrew
+@see https://github.com/caskroom/homebrew-versions
 * split penbrew to different split packages
 * assemble full install from split packages
