@@ -41,7 +41,6 @@ cask 'penbrew-prerequisites' do
   depends_on formula: 'unrar'
   depends_on formula: 'watch'
   depends_on cask: 'xquartz'
-  depends_on cask: 'xquartz'
   depends_on cask: 'virtualbox'
   depends_on cask: 'virtualbox-extension-pack'
   depends_on cask: 'dockertoolbox'
