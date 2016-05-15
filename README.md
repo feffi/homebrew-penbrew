@@ -2,6 +2,7 @@
 Aye, ye Open PENtesting Brew for ya sailsman Apple device.
 
 # Status
+[![Twitter Follow](https://img.shields.io/twitter/follow/feffi1.svg?style=social&label=Follow&maxAge=2592000&style=flat)]()
 [![license](https://img.shields.io/github/license/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
 [![Code Climate](https://img.shields.io/codeclimate/github/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
 [![Coverage](https://img.shields.io/codeclimate/coverage/github/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
