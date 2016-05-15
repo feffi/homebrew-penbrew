@@ -3,6 +3,9 @@ Aye, ye Open PENtesting Brew for ya sailsman Apple device.
 
 # Status
 [![license](https://img.shields.io/github/license/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
+[![Code Climate](https://img.shields.io/codeclimate/github/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
+[![Coverage](https://img.shields.io/codeclimate/coverage/github/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
+[![Issues](https://img.shields.io/codeclimate/issues/github/feffi/homebrew-penbrew.svg?maxAge=2592000&style=flat)]()
 
 # What is this all about?
 This homebrew formular keeps track of missing formula for pentesting tools.
