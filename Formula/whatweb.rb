@@ -1,15 +1,12 @@
 require "formula"
 
-class Wpscan < Formula
-  homepage "https://github.com/wpscanteam/wpscan"
-  head 'https://github.com/wpscanteam/wpscan', :using => :git
-  url "https://github.com/wpscanteam/wpscan", :using => :git, :revision => '641108e'
-  version "2.9.3"
+class Whatweb < Formula
+  homepage "https://github.com/urbanadventurer/WhatWeb"
+  url "https://github.com/urbanadventurer/WhatWeb", :using => :git, :revision => '039768f'
+  version "0.4.8-20161009"
+  revision 1
 
   depends_on "ruby@2.3"
-  depends_on "libxml2"
-  depends_on "libxslt"
-  depends_on "curl"
 
   resource "bundler" do
     url "https://rubygems.org/downloads/bundler-1.14.3.gem"
@@ -24,14 +21,20 @@ class Wpscan < Formula
              "--install-dir", "vendor/bundle")
     end
 
+    (buildpath/"Gemfile").write <<-EOS.undent
+      source 'https://rubygems.org'
+
+      gem 'json'
+    EOS
+
     ENV["GEM_HOME"] = "#{buildpath}/vendor/bundle"
     system "#{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby", "#{buildpath}/vendor/bundle/bin/bundle", "install", "--no-cache", "--path", "vendor/bundle"
 
-    (bin/"wpscan.rb").write <<-EOS.undent
+    (bin/"whatweb").write <<-EOS.undent
       #!/usr/bin/env bash
       export GEM_HOME="#{libexec}/vendor/bundle"
-      export BUNDLE_GEMFILE="#{libexec}/Gemfile"
-      #{libexec}/vendor/bundle/bin/bundle exec #{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby #{libexec}/wpscan.rb "$@"
+      export BUNDLE_GEMFILE=#{libexec}/Gemfile
+      #{libexec}/vendor/bundle/bin/bundle exec #{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby #{libexec}/whatweb "$@"
     EOS
     libexec.install Dir['*']
     libexec.install ".bundle"

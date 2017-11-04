@@ -1,15 +1,15 @@
 require "formula"
 
-class Wpscan < Formula
-  homepage "https://github.com/wpscanteam/wpscan"
-  head 'https://github.com/wpscanteam/wpscan', :using => :git
-  url "https://github.com/wpscanteam/wpscan", :using => :git, :revision => '641108e'
-  version "2.9.3"
+class Cewl < Formula
+  homepage "https://github.com/digininja/CeWL/"
+  url "https://github.com/digininja/CeWL/", :using => :git, :revision => 'e102a5c'
+  version "5.3"
+  revision 3
 
   depends_on "ruby@2.3"
   depends_on "libxml2"
   depends_on "libxslt"
-  depends_on "curl"
+  depends_on "exiftool"
 
   resource "bundler" do
     url "https://rubygems.org/downloads/bundler-1.14.3.gem"
@@ -27,11 +27,20 @@ class Wpscan < Formula
     ENV["GEM_HOME"] = "#{buildpath}/vendor/bundle"
     system "#{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby", "#{buildpath}/vendor/bundle/bin/bundle", "install", "--no-cache", "--path", "vendor/bundle"
 
-    (bin/"wpscan.rb").write <<-EOS.undent
+    inreplace "cewl.rb", "require './cewl_lib'", "require '#{libexec}/cewl_lib'"
+    inreplace "fab.rb", "require \"./cewl_lib.rb\"", "require '#{libexec}/cewl_lib.rb'"
+
+    (bin/"cewl.rb").write <<-EOS.undent
       #!/usr/bin/env bash
       export GEM_HOME="#{libexec}/vendor/bundle"
       export BUNDLE_GEMFILE="#{libexec}/Gemfile"
-      #{libexec}/vendor/bundle/bin/bundle exec #{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby #{libexec}/wpscan.rb "$@"
+      #{libexec}/vendor/bundle/bin/bundle exec #{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby #{libexec}/cewl.rb "$@"
+    EOS
+    (bin/"fab.rb").write <<-EOS.undent
+      #!/usr/bin/env bash
+      export GEM_HOME="#{libexec}/vendor/bundle"
+      export BUNDLE_GEMFILE="#{libexec}/Gemfile"
+      #{libexec}/vendor/bundle/bin/bundle exec #{HOMEBREW_PREFIX}/opt/ruby@2.3/bin/ruby #{libexec}/fab.rb "$@"
     EOS
     libexec.install Dir['*']
     libexec.install ".bundle"

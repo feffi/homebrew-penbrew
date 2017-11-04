@@ -1,19 +1,21 @@
-class Yersinia < Formula
-  desc "Yersinia is a network tool designed to take advantage of some weakeness in different network protocols."
-  homepage "http://www.yersinia.net"
-  url "http://www.yersinia.net/download/yersinia-0.7.tar.gz"
-  version "0.7"
-  sha256 "0a82b904991ee1ecbbeb0a19ca3c3261f4014170a5c50a7fcd5be9af5e30a029"
+require 'formula'
 
+class Yersinia < Formula
+  homepage 'http://www.yersinia.net'
+  url 'http://www.yersinia.net/download/yersinia-0.7.3.tar.gz'
+  sha256 '042abc466c5b470b97079e0049b4029a8cbb75d583cfbfb756fca76e460d40b4'
+  revision 1
+
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
   depends_on 'libnet'
-  depends_on 'libpcap'
 
   def install
-    system "./configure", "--with-libnet-includes=/usr/local/include/",
-    "--disable-gtk",
-    "--with-pcap-includes=/usr/local/include",
-    "--prefix=#{prefix}"
+    system "./configure", "--with-libnet-includes=#{HOMEBREW_PREFIX}/include",
+  			   "--with-pcap-includes=/usr/include/pcap",
+  			   "--disable-gtk",
+           "--prefix=#{prefix}"
     system "make"
-    system "make install" # if this fails, try separate make/make install steps
+    system "make", "install"
   end
 end
